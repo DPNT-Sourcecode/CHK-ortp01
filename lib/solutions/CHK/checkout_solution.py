@@ -12,7 +12,7 @@ SKUS = {
 
 def checkout(skus):
 
-    total = 0:
+    total = 0
     counts = {}
 
     for sku in skus:
@@ -21,15 +21,13 @@ def checkout(skus):
         else:
             counts[sku] = 1
 
-    for sku in skus:
+    for sku, qty in counts.items():
 
-        if skus == "": 
-            total = -1
-        elif isinstance(skus[0], int):
-            if skus[0] == SKUS[sku].get('offer_qty'):
-                total += SKUS[sku].get('offer_price', -1)
+        if skus in SKUS.keys():
+            if SKUS[sku].get('offer_qty') == qty:
+                total += SKUS[sku].get('offer_price')
         else:
-            total += SKUS[sku].get('price', -1)
+            total += SKUS[sku].get('price') * qty
 
     return total
 
