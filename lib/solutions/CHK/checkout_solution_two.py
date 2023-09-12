@@ -25,9 +25,11 @@ def checkout(skus):
     for sku, qty in counts.items():
         print(f'sku: {sku}, qty: {qty}')
         if sku in SKUS.keys():
-            if SKUS[sku].get('offer_qty'):
-                if qty >= SKUS[sku].get('offer_qty',0) :
-                    offers = int(qty / SKUS[sku].get('offer_qty',0))
+            if SKUS[sku].get('offers'):
+                offer_qtys = list(SKUS[sku].get('offers').keys())
+                print(f'offer qty: {offer_qtys}')
+                if len(offer_qtys) == 1 and qty == offer_qtys[0]:
+                    offers = int(qty / offer_qtys[0])
                     print(f'offers: {offers}')
                     total += SKUS[sku].get('offer_price', 0) * offers
                     print(f'offer: {qty}{sku} : {total}')
@@ -44,5 +46,6 @@ def checkout(skus):
         print(total)
 
     return total
+
 
 
