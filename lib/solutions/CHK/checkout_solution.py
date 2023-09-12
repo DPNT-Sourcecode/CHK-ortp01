@@ -27,14 +27,16 @@ def checkout(skus):
             if SKUS[sku].get('offer_qty', None) and SKUS[sku].get('offer_qty', None) == qty:
                 total += (SKUS[sku].get('offer_price') * qty / int(SKUS[sku].get('offer_price'))) 
                 print(f'offer: {qty}{sku} : {total}')
-                print(f"remainder: {qty % SKUS[sku].get('offer_qty')}")
-                total += (qty % SKUS[sku].get('offer_qty') * SKUS[sku].get('offer_qty'))
+                remainder = int(qty % SKUS[sku].get('offer_qty'))
+                print(f"remainder: {remainder}")
+                total += (qty % SKUS[sku].get('offer_qty') * SKUS[sku].get('offer_qty')) 
             else:
                 total += SKUS[sku].get('price') * qty
         else:
             total = -1
 
     return total
+
 
 
 
