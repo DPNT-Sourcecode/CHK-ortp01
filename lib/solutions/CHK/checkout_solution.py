@@ -22,8 +22,8 @@ def checkout(skus):
             counts[sku] = 1
 
     for sku, qty in counts.items():
-        
-        if skus in SKUS.keys():
+        print(f'sku: {sku}, qty: {qty}')
+        if sku in SKUS.keys():
             if SKUS[sku].get('offer_qty') == qty:
                 total += SKUS[sku].get('offer_price')
             else:
