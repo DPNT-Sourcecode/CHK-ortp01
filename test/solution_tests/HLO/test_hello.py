@@ -3,4 +3,5 @@ from solutions.HLO import hello_solution
 
 class TestHello():
     def test_hello(self):
-        assert hello_solution.hello('Hello World!') == 'Hello World!'
+        assert hello_solution.hello('Not Hello..') == 'Hello, World!'
+
