@@ -24,10 +24,10 @@ def checkout(skus):
     for sku, qty in counts.items():
         print(f'sku: {sku}, qty: {qty}')
         if sku in SKUS.keys():
-            if SKUS[sku].get('offer_qty', None):
-                total += SKUS[sku].get('offer_price') * (qty / int(SKUS[sku].get('offer_qty'))) 
+            if qty > SKUS[sku].get('offer_qty', 0):
+                total += SKUS[sku].get('offer_price') * (qty / SKUS[sku].get('offer_qty',0)) 
                 print(f'offer: {qty}{sku} : {total}')
-                remainder = int(qty % SKUS[sku].get('offer_qty'))
+                remainder = qty % SKUS[sku].get('offer_qty'))
                 print(f"remainder: {remainder}")
                 total += (qty % SKUS[sku].get('offer_qty') * SKUS[sku].get('offer_qty')) 
             else:
@@ -36,6 +36,7 @@ def checkout(skus):
             total = -1
 
     return total
+
 
 
 
