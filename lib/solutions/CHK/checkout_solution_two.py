@@ -4,10 +4,11 @@
 # skus = unicode string
 
 SKUS = {
-    "A": {"price" : 50, "offer_price" : 130, "offer_qty": 3},
-    "B": {"price" : 30, "offer_price" : 45, "offer_qty": 2},
+    "A": {"price" : 50, "offers": { 3: {'offer_price': 130}, 5: {'offer_price': 200}}},
+    "B": {"price" : 30, "offers": { 2: {"offer_price" : 45}}},
     "C": {"price" : 20},
-    "D": {"price" : 15}
+    "D": {"price" : 15, "offers": {2: {"free_item": "B"}}}
+    
 }
 
 def checkout(skus):
@@ -43,8 +44,5 @@ def checkout(skus):
         print(total)
 
     return total
-
-
-
 
 
