@@ -11,16 +11,16 @@ SKUS = {
 }
 
 def checkout(skus):
-
-
     if skus == "": 
-        return -1
-    if isinstance(skus[0], int):
-
+        total = -1
+    elif isinstance(skus[0], int):
+        if skus[0] == SKUS.get('offer_qty'):
+            total = SKUS.get('offer_price', -1)
     else:
-        print(f"SKUs in basket: {skus}")
+        total = SKUS.get('price', -1)
 
-    
-    raise NotImplementedError()
+    return total
+
+
 
 
