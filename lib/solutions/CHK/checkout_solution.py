@@ -22,12 +22,14 @@ def checkout(skus):
             counts[sku] = 1
 
     for sku, qty in counts.items():
-
+        
         if skus in SKUS.keys():
             if SKUS[sku].get('offer_qty') == qty:
                 total += SKUS[sku].get('offer_price')
+            else:
+                total += SKUS[sku].get('price') * qty
         else:
-            total += SKUS[sku].get('price') * qty
+            total = -1
 
     return total
 
