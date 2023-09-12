@@ -13,6 +13,13 @@ SKUS = {
 def checkout(skus):
 
     total = 0:
+    counts = {}
+
+    for sku in skus:
+        if sku in counts: 
+            counts[sku] += 1
+        else:
+            counts[sku] = 1
 
     for sku in skus:
 
@@ -25,6 +32,7 @@ def checkout(skus):
             total += SKUS[sku].get('price', -1)
 
     return total
+
 
 
 
